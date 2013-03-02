@@ -12,14 +12,18 @@
           th Descrição
           th
           th
-          th
-          th
       tbody
-        - @despised_stories.each do |story|
+        - if @despised_stories.any?
+          - @despised_stories.each do |story|
+            tr
+              td = link_to story.to_s, [parent, story]
+              td = link_to t('.want'), want_project_story_path(parent, story), method: :put, class: 'btn btn-mini btn-success'
+              td = link_to t('actions.edit'), edit_project_story_path(parent, story), class: 'btn btn-mini'
+        - else
           tr
-            td = link_to story.to_s, [parent, story]
-            td = link_to t('.want'), want_project_story_path(parent, story), method: :put, class: 'btn btn-mini btn-success'
-            td = link_to t('actions.edit'), edit_project_story_path(parent, story), class: 'btn btn-mini'
+            td = t('.no_despised_stories')
+            td
+            td
 
   .span6
     h1 Funcionalidades que serão feitas
@@ -29,12 +33,16 @@
           th Descrição
           th
           th
-          th
-          th
       tbody
-        - @wanted_stories.each do |s|
-          - resource = story(s)
+        - if @wanted_stories.any?
+          - @wanted_stories.each do |s|
+            - resource = story(s)
+            tr
+              td = link_to resource.to_s, [parent, resource]
+              td = link_to t('.dont_want'), despise_project_story_path(parent, resource), method: :put, class: 'btn btn-mini btn-danger'
+              td = link_to t('actions.edit'), edit_project_story_path(parent, resource), class: 'btn btn-mini'
+        - else
           tr
-            td = link_to resource.to_s, [parent, resource]
-            td = link_to t('.dont_want'), despise_project_story_path(parent, resource), method: :put, class: 'btn btn-mini btn-danger'
-            td = link_to t('actions.edit'), edit_project_story_path(parent, resource), class: 'btn btn-mini'
+            td = t('.no_wanted_stories')
+            td
+            td
