@@ -3,6 +3,7 @@ html lang="en"
   = render "layouts/head"
 
   body
+    = render partial: 'layouts/flash', locals: {flash: flash} if flash
     .navbar.navbar-fixed-top
       .navbar-inner
         .container

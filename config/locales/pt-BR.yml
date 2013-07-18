@@ -24,8 +24,10 @@ pt-BR:
     new:
       title: 'Nova funcionalidade'
     index:
-      want: 'Quero essa'
       dont_want: 'Não quero mais'
+      no_despised_stories: 'Sem funcionalidades fora'
+      no_wanted_stories: 'Sem funcionalidades que serão feitas'
+      want: 'Quero essa'
   pages:
     home:
       pitch: 'O modo mais simples de se organizar uma captação de requisitos.'
